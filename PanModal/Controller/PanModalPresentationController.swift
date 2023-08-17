@@ -523,7 +523,11 @@ private extension PanModalPresentationController {
                     transition(to: .shortForm)
 
                 } else {
-                    presentedViewController.dismiss(animated: true)
+                    if recognizer.velocity(in: presentedView).y > 1000 {
+                        presentedViewController.dismiss(animated: true)
+                    } else {
+                        transition(to: .longForm)
+                    }
                 }
 
             } else {
